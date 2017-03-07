@@ -12,20 +12,30 @@ import {
   View
 } from 'react-native';
 
+import message from './temp'
+
 export default class playapp extends Component {
   render() {
     return (
       <View style={styles.container}>
+
         <Text style={styles.welcome}>
-          Welcome to React torreta!
+            Welcome to React torreta!
+
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
         </Text>
+
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+
+        <Text style={styles.instructions}>
+          {message}
+        </Text>
+
       </View>
     );
   }
