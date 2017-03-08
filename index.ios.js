@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   personRow: {
-
+    flexDirection: "row",
+    justifyContent: "center"
   },
   personName: {
 
