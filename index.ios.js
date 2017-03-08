@@ -59,7 +59,7 @@ export default class playapp extends Component {
 
         <View style = {{flex: 1}} />
 
-        <Icon name="chevron-right" size={20} style = {styles.personMoreIcon}/>
+        <Icon name="chevron-right"  style = {styles.personMoreIcon}/>
 
       </View>
     )
@@ -77,15 +77,17 @@ const styles = StyleSheet.create({
   personRow: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
+    height: 30,
   },
   personName: {
-
+    marginLeft: 20,
   },
   personMoreIcon: {
     color: "green",
     height: 20,
     width: 20,
+    marginRight: 20
   }
 
 });
