@@ -22,6 +22,7 @@ Anything that works with Javascript Core, works with react. (V6 Javascript engin
 
 npm install --save <package name>; works wonders and modifies package.json file like a boss
 
+(exported lodash, some sweet tools there https://lodas.com/docs)
 
 Extras:
 
@@ -30,5 +31,8 @@ Got Ngrok to publish my local ports:
     https://ngrok.com/
 
 Thank its creators for this beautiful tool.
+
+
+
 
 
