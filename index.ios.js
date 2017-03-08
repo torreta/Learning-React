@@ -5,38 +5,22 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View } from 'react-native';
+
+import ViewContainer from './app/components/ViewContainer'
 
 import message from './temp'
 
 export default class playapp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-
-        <Text style={styles.welcome}>
-            Welcome to React torreta!
-
+      <ViewContainer>
+        <Text>
+          you see? works
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
+      </ViewContainer>
 
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
 
-        <Text style={styles.instructions}>
-          {message}
-        </Text>
-
-      </View>
     );
   }
 }
