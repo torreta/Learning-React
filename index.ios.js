@@ -8,13 +8,16 @@ import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import ViewContainer from './app/components/ViewContainer'
+import StatusBarBackground from './app/components/StatusBarBackground'
 
 import message from './temp'
 
 export default class playapp extends Component {
   render() {
     return (
+
       <ViewContainer>
+        <StatusBarBackground />
         <Text style = {{backgroundColor: "coral"}}>
           you see? works
         </Text>
