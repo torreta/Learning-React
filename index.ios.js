@@ -56,7 +56,7 @@ export default class playapp extends Component {
     return(
       <View style={styles.personRow}>
         <Text style = {styles.personName}>
-          {person.firstName}
+          {_.capitalize(person.firstName)}
         </Text>
       </View>
     )
