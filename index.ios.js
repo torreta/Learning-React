@@ -15,7 +15,7 @@ export default class playapp extends Component {
   render() {
     return (
       <ViewContainer>
-        <Text>
+        <Text style = {{backgroundColor: "coral"}}>
           you see? works
         </Text>
       </ViewContainer>
