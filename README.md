@@ -20,6 +20,7 @@ Very important to understand that everything that you put on the app folder (in 
 
 Anything that works with Javascript Core, works with react. (V6 Javascript engine of chrome but for Ios)
 
+npm install --save <package name>; works wonders and modifies package.json file like a boss
 
 
 Extras:
@@ -29,3 +30,5 @@ Got Ngrok to publish my local ports:
     https://ngrok.com/
 
 Thank its creators for this beautiful tool.
+
+
