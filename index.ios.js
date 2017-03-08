@@ -14,7 +14,7 @@ import _ from 'lodash'
 import message from './temp'
 import people from './temp'
 
-
+import { Icon } from 'react-native-vector-icons/FontAwesome'
 
 
 export default class playapp extends Component {
