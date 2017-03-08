@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, ListView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from './app/components/ViewContainer'
 import StatusBarBackground from './app/components/StatusBarBackground'
@@ -14,7 +15,6 @@ import _ from 'lodash'
 import message from './temp'
 import people from './temp'
 
-import { Icon } from 'react-native-vector-icons/FontAwesome'
 
 
 export default class playapp extends Component {
@@ -55,9 +55,12 @@ export default class playapp extends Component {
   _renderPersonRow(person){
     return(
       <View style={styles.personRow}>
-        <Text style = {styles.personName}>
-          {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`}
-        </Text>
+        <Text style = {styles.personName}> {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`} </Text>
+
+        <View style = {{flex: 1}} />
+
+        <Icon name="chevron-right" size={20} style = {styles.personMoreIcon}/>
+
       </View>
     )
   }
@@ -73,11 +76,18 @@ const styles = StyleSheet.create({
   },
   personRow: {
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "flex-start",
+    alignItems: "center"
   },
   personName: {
 
   },
+  personMoreIcon: {
+    color: "green",
+    height: 20,
+    width: 20,
+  }
+
 });
 
 AppRegistry.registerComponent('playapp', () => playapp);
