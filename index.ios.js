@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, View, ListView } from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from './app/components/ViewContainer'
@@ -54,14 +54,14 @@ export default class playapp extends Component {
 
   _renderPersonRow(person){
     return(
-      <View style={styles.personRow}>
+      <TouchableOpacity style={styles.personRow}>
         <Text style = {styles.personName}> {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`} </Text>
 
         <View style = {{flex: 1}} />
 
         <Icon name="chevron-right"  style = {styles.personMoreIcon}/>
 
-      </View>
+      </TouchableOpacity>
     )
   }
 
