@@ -53,6 +53,8 @@ export default class playapp extends Component {
   }
 
   _renderPersonRow(person){
+    console.log('rendering person');
+
     return(
       <TouchableOpacity style={styles.personRow} onPress = {(event) => console.log(person) } >
         <Text style = {styles.personName}> {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`} </Text>
