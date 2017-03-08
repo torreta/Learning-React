@@ -20,9 +20,12 @@ Very important to understand that everything that you put on the app folder (in 
 
 Anything that works with Javascript Core, works with react. (V6 Javascript engine of chrome but for Ios)
 
-npm install --save <package name>; works wonders and modifies package.json file like a boss
+`npm install --save <package name>`; works wonders and modifies package.json file like a boss
 
 (exported lodash, some sweet tools there https://lodas.com/docs)
+
+`rnpm <command>` exists too... is meant to be used when you have Complex library imports, or when some libraries have an specific java/ios (shift) component and a javascript component
+
 
 Extras:
 
