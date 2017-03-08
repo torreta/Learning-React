@@ -5,7 +5,7 @@ class StatusBarBackground extends Component {
 
     render(){
         return (
-            <View style={styles.StatusBarBackground}>
+            <View style={[styles.StatusBarBackground, {backgroundColor: this.props.backgroundColor}]}>
             </View>
         )
     }
