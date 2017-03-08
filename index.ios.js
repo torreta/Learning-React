@@ -9,14 +9,12 @@ import {AppRegistry, StyleSheet, Text, View, ListView } from 'react-native';
 
 import ViewContainer from './app/components/ViewContainer'
 import StatusBarBackground from './app/components/StatusBarBackground'
+import _ from 'lodash'
 
 import message from './temp'
+import people from './temp'
 
-const people = [
-                {id: "1", firstName: "Luis", lastName: "Campos", roomNumber: 30},
-                {id: "2", firstName: "Wilghe", lastName: "Alzualde", roomNumber: 22},
-                {id: "3", firstName: "Anibal", lastName: "Abdulkhalek", roomNumber: 6}
-              ]
+
 
 
 export default class playapp extends Component {
