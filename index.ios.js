@@ -17,7 +17,7 @@ export default class playapp extends Component {
     return (
 
       <ViewContainer>
-        <StatusBarBackground backgroundColor={"skyblue"} />
+        <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
         <Text style = {{backgroundColor: "coral"}}>
           you see? works
         </Text>
