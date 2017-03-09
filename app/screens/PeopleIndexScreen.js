@@ -54,9 +54,6 @@ import people from '../../temp'
 
   _renderPersonRow(person){
     var i = i+1;
-
-    console.log('rendering person '+person.lastName);
-
     return(
       <TouchableOpacity style={styles.personRow} onPress = {(event) => console.log(person) } >
         <Text style = {styles.personName}> {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`} </Text>
