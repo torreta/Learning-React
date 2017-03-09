@@ -53,7 +53,9 @@ export default class playapp extends Component {
   }
 
   _renderPersonRow(person){
-    console.log('rendering person');
+    var i = i+1;
+
+    console.log('rendering person '+person.lastName);
 
     return(
       <TouchableOpacity style={styles.personRow} onPress = {(event) => console.log(person) } >
