@@ -55,7 +55,7 @@ import people from '../../temp'
   _renderPersonRow(person){
     var i = i+1;
     return(
-      <TouchableOpacity style={styles.personRow} onPress = {(event) => console.log(person) } >
+      <TouchableOpacity style={styles.personRow} onPress = {(event) => this._navigateToPersonShow(person) } >
         <Text style = {styles.personName}> {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`} </Text>
 
         <View style = {{flex: 1}} />
@@ -65,6 +65,14 @@ import people from '../../temp'
       </TouchableOpacity>
     )
   }
+
+  _navigateToPersonShow(person){
+    this.props.navigator.push({
+      ident: "PersonShow",
+      person: person
+    })
+  }
+
 
 }
 
