@@ -35,6 +35,7 @@ export default class playapp extends Component {
         ref="appNavigator"
         style = {styles.navigatorStyles}
         renderScene={this._renderScene}
+        configureScene={(route) => ({ ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight}) }
       />
 
     )

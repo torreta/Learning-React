@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, ListView, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from '../components/ViewContainer'
@@ -69,7 +69,8 @@ import people from '../../temp'
   _navigateToPersonShow(person){
     this.props.navigator.push({
       ident: "PersonShow",
-      person: person
+      person,
+      sceneConfig: Navigator.SceneConfigs.FloatFromBottom
     })
   }
 

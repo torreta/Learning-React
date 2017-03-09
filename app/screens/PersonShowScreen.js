@@ -23,8 +23,7 @@ import people from '../../temp'
 
   render() {
     return (
-
-      <ViewContainer>
+      <ViewContainer style={{backgroundColor: "dodgerblue"}}>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
         <Text style={{marginTop: 100, fontSize: 20}}> {`Person Show Screen`} </Text>
         <Text style = {styles.personName}> {` ${_.capitalize(this.props.person.firstName)} ${_.capitalize(this.props.person.lastName)}`} </Text>
