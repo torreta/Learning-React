@@ -19,14 +19,44 @@ import people from '../../temp'
 
  class PeopleShowScreen extends Component {
 
-  constructor(props){super(props) }
+  constructor(props){
+    super(props)
+    var ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
+
+    this.state = {
+      peopleDataSource: ds.cloneWithRows(people)
+    }
+   }
+
+  _renderPersonRow(person){
+    var i = i+1;
+    return(
+      <TouchableOpacity style={styles.personRow} onPress = {(event) => this._navigateToPersonShow(person) } >
+        <Text style = {styles.personName}> {` ${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`} </Text>
+
+        <View style = {{flex: 1}} />
+
+        <Icon name="chevron-right"  style = {styles.personMoreIcon}/>
+
+      </TouchableOpacity>
+    )
+  }
+
+  _navigateToPersonShow(person){
+    this.props.navigator.push({
+      ident: "PersonShow",
+      person
+    })
+  }
 
   render() {
     return (
       <ViewContainer style={{backgroundColor: "dodgerblue"}}>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
-        <Text style={{marginTop: 100, fontSize: 20}}> {`Person Show Screen`} </Text>
-        <Text style = {styles.personName}> {` ${_.capitalize(this.props.person.firstName)} ${_.capitalize(this.props.person.lastName)}`} </Text>
+
+        <ListView style = {{marginTop: 100}}
+          dataSource = {this.state.peopleDataSource}
+          renderRow = {(person) => { return this._renderPersonRow(person)}}/>
       </ViewContainer>
 
 
@@ -37,8 +67,28 @@ import people from '../../temp'
 const styles = StyleSheet.create({
   personName: {
     marginLeft: 20,
+  },
+ container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  personRow: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    height: 30,
+  },
+  personName: {
+    marginLeft: 20,
+  },
+  personMoreIcon: {
+    color: "green",
+    height: 20,
+    width: 20,
+    marginRight: 20
   }
-
 });
 
 module.exports = PeopleShowScreen
