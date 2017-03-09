@@ -36,6 +36,10 @@ import people from '../../temp'
 
         <View style = {{flex: 1}} />
 
+        <Text style = {{backgroundColor: "coral"}}>
+         {`${person.roomNumber}`}
+        </Text>
+
         <Icon name="chevron-right"  style = {styles.personMoreIcon}/>
 
       </TouchableOpacity>
@@ -57,6 +61,7 @@ import people from '../../temp'
         <ListView style = {{marginTop: 100}}
           dataSource = {this.state.peopleDataSource}
           renderRow = {(person) => { return this._renderPersonRow(person)}}/>
+
       </ViewContainer>
 
 
