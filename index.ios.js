@@ -4,12 +4,34 @@ import PeopleIndexScreen from './app/screens/PeopleIndexScreen'
 
 export default class playapp extends Component {
 
+  _renderScene(route, navigator){
+    var globalNavigatorProps = { navigator }
+
+      switch(route.ident){
+        case "PeopleIndex":
+          return(
+            <PeopleIndexScreen {...globalNavigatorProps}/>
+          )
+          break;
+        default:
+          return(
+            <PeopleIndexScreen {...globalNavigatorProps}/>
+          )
+          break;
+      }
+  }
+
   render() {
     return (
 
-      <PeopleIndexScreen />
+      <Navigator
+        initialRoute={{ident: "PeopleIndex"}}
+        ref="appNavigator"
+        style = {styles.navigatorStyles}
+        renderScene={this._renderScene}
+      />
 
-    );
+    )
   }
 
 
