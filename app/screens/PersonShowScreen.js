@@ -58,9 +58,18 @@ import people from '../../temp'
       <ViewContainer style={{backgroundColor: "dodgerblue"}}>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
 
+        <TouchableOpacity onPress={ () => this.props.navigator.pop()}>
+                <Icon name="times" size={30} />
+        </TouchableOpacity>
+
         <ListView style = {{marginTop: 100}}
           dataSource = {this.state.peopleDataSource}
           renderRow = {(person) => { return this._renderPersonRow(person)}}/>
+
+        <Text style={{marginTop: 15, fontSize:20}}>
+          {`PERSON SHOW SCREEN`}
+        </Text>
+
 
       </ViewContainer>
 
