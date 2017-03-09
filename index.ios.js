@@ -15,7 +15,7 @@ export default class playapp extends Component {
           break;
         default:
           return(
-            <PeopleIndexScreen {...globalNavigatorProps}/>
+           <Text>{`YUP, messed something ${route.ident}`} </Text>
           )
           break;
       }
