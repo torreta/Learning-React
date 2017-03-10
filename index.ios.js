@@ -8,7 +8,9 @@ export default class playapp extends Component {
 
   render() {
     return (
-      <AppNavigator />
+      <AppNavigator
+        initialRoute ={{ident: "PeopleIndex"}}
+      />
     )
   }
 

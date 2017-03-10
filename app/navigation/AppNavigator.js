@@ -35,7 +35,7 @@ class AppNavigator extends Component {
     return (
 
       <Navigator
-        initialRoute={{ident: "PeopleIndex"}}
+        initialRoute={this.props.initialRoute}
         ref="appNavigator"
         style = {styles.navigatorStyles}
         renderScene={this._renderScene}
