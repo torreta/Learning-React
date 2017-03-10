@@ -54,8 +54,32 @@ import people from '../../temp'
   }
 
   render() {
+    var personBackgroundColor
+      switch(this.props.person.roomNumber){
+        case 30:
+          personBackgroundColor = "limegreen"
+          break;
+        case 22:
+          personBackgroundColor = "coral"
+          break;
+        case 6:
+          personBackgroundColor = "dodgerblue"
+          break;
+        case 14:
+          personBackgroundColor = "pink"
+          break;
+        case 44:
+          personBackgroundColor = "violet"
+          break;
+        case 18:
+          personBackgroundColor = "grey"
+          break
+        default:
+          personBackgroundColor = "black"
+      }
+
     return (
-      <ViewContainer style={{backgroundColor: "dodgerblue"}}>
+      <ViewContainer style={{backgroundColor: personBackgroundColor}}>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
 
         <TouchableOpacity onPress={ () => this.props.navigator.pop()}>
