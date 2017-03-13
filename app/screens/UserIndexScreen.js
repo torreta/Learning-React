@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator } from 'react-native';
+import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from '../components/ViewContainer'
@@ -8,7 +8,8 @@ import _ from 'lodash'
 
 import message from '../../temp'
 import people from '../../temp'
-import API from '../utils/api.js';
+// import API from '../utils/api.js';
+import ApiUtils from '../utils/Helpers.js';
 
 
  class UserIndexScreen extends Component {
@@ -24,12 +25,12 @@ import API from '../utils/api.js';
   }
 
   componentWillMount(){
-    console.log("component will mount is always there")
+    // console.log("component will mount is always there")
+    this._getUsersAPI()
 
   }
 
   render() {
-          console.log(API.url);
     return (
 
       <ViewContainer>
@@ -47,42 +48,29 @@ import API from '../utils/api.js';
   // Get a user
   _getUsersAPI(){
 
-    let url = API.url + 'authenticate';
-
+    console.log("entro al fetch")
+    let url = ApiUtils.url + 'users';
+    console.log(url)
     fetch(url,
       {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          'client_uid': API.client_uid,
-        })
       })
     .then(ApiUtils.checkStatus)
     .then(response => response.json())
-    .then(response => this._requestSuccessClient(response))
+    .then(console.log("usuarios:"))
+    .then(response => console.log(response))
     .catch((error) => {
       Alert.alert(
           "Error1",
           'There was an error trying to connect with the server. Please try later.'
       );
-      this.setState({isLoading:false});
 
-      AsyncStorage.removeItem('mode');
-      AsyncStorage.setItem('mode','customer');
     }).done();
   }
-
-  _navigateToPersonShow(person){
-    this.props.navigator.push({
-      ident: "PersonShow",
-      person,
-      sceneConfig: Navigator.SceneConfigs.FloatFromBottom
-    })
-  }
-
 
 }
 
