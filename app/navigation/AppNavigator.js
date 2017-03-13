@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Navigator, Text, View} from 'react-native';
 import PeopleIndexScreen from '../screens/PeopleIndexScreen'
 import PersonShowScreen from '../screens/PersonShowScreen'
+import UserIndexScreen from '../screens/UserIndexScreen'
 
 
 
@@ -21,6 +22,11 @@ class AppNavigator extends Component {
         case "PersonShow":
           return(
             <PersonShowScreen {...globalNavigatorProps} person = {route.person}/>
+        )
+        break;
+        case "UserIndex":
+          return(
+            <UserIndexScreen {...globalNavigatorProps} />
         )
         break;
         default:
