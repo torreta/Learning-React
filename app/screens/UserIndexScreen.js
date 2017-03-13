@@ -19,7 +19,9 @@ import ApiUtils from '../utils/Helpers.js';
     var ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
 
     this.state = {
-      peopleDataSource: ds.cloneWithRows(people)
+      users: [],
+      email: '',
+      usersDatasource: [],
     }
 
   }
@@ -31,12 +33,19 @@ import ApiUtils from '../utils/Helpers.js';
   }
 
   render() {
+
+    var usuarios = _.map(
+      this.state.users, (user) => {
+         return <Text>{user.email}</Text>
+      }
+    )
+
     return (
 
       <ViewContainer>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
 
-        <Text> Marcar que esta la cosa funcionando</Text>
+        {usuarios}
 
 
       </ViewContainer>
@@ -61,8 +70,28 @@ import ApiUtils from '../utils/Helpers.js';
       })
     .then(ApiUtils.checkStatus)
     .then(response => response.json())
-    .then(console.log("usuarios:"))
-    .then(response => console.log(response))
+    .then(
+
+      (response) => {
+        this.setState({
+          users: response,
+          email: response[0].email,
+          // usersDatasource: this.state.ds.cloneWithRows(response)
+        })
+
+        console.log("response")
+        console.log(this.state.users)
+        console.log(this.state.email)
+
+    }
+
+
+      )
+    // .then(console.log("usuarios:"))
+    // .then(response => console.log(response))
+    // .then(response => {this.state.users})
+    // .then(console.log("despues de la llamada:"))
+    // .then(console.log(this.state.users))
     .catch((error) => {
       Alert.alert(
           "Error1",
