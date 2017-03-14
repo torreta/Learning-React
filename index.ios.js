@@ -52,6 +52,17 @@ export default class playapp extends Component {
 
         </Icon.TabBarItemIOS>
 
+        <Icon.TabBarItemIOS
+          selected = {this.state.selectedTab === "tab4_geo"}
+          title = {`TAB 4 - Map`}
+          iconName="user"
+          onPress={() => this.setState({selectedTab: "tab4_geo"})}
+        >
+          <AppNavigator
+          initialRoute ={{ident: "GeoLocation"}} />
+
+        </Icon.TabBarItemIOS>
+
       </TabBarIOS>
     )
   }

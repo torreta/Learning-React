@@ -5,6 +5,7 @@ import {StyleSheet, Navigator, Text, View} from 'react-native';
 import PeopleIndexScreen from '../screens/PeopleIndexScreen'
 import PersonShowScreen from '../screens/PersonShowScreen'
 import UserIndexScreen from '../screens/UserIndexScreen'
+import GeoLocationScreen from '../screens/GeoLocationScreen'
 
 
 
@@ -27,6 +28,11 @@ class AppNavigator extends Component {
         case "UserIndex":
           return(
             <UserIndexScreen {...globalNavigatorProps} />
+        )
+        break;
+        case "GeoLocation":
+          return(
+            <GeoLocationScreen {...globalNavigatorProps} />
         )
         break;
         default:
