@@ -15,3 +15,6 @@ its important, to understand props and states, setState will re-render the view 
 props states and variables, should be initialized, if you will load something later on props (after an API call or something), you should leave in the constructor something to mark you will be loading data later there.
 
 well, some components are specially easy because they dont take a lot of parameters, or just need a bare minimun to work, BUT, the catch here is that yo need sometimes develop the behavior the component will have, in my case, learnt that the hard way with the MapView, seems simple, its simple, but you got to learn how to use it well.
+
+MapView, was deprecated, so i went with the recommended component proposed by the devs of react `npm install react-native-maps --save`,
+requires install and link `react-native link react-native-maps`, and yep, you should restart the device and rebuild.
