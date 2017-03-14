@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, Navigator, Alert, MapView } from 'react-native';
+import {StyleSheet, Text, Navigator, Alert, Dimensions } from 'react-native';
 import ViewContainer from '../components/ViewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
+import MapView from 'react-native-maps'
 
+const {height, width} = Dimensions.get('window');
 
 class GeoLocationScreen extends Component {
 
@@ -19,8 +21,13 @@ class GeoLocationScreen extends Component {
 
         <Text> Aqui me toca poner el mapita</Text>
 
-        <MapView style = {styles.mapita}
-            showUserLocation = {true}
+        <MapView style = {styles.map}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
         />
 
       </ViewContainer>
@@ -44,6 +51,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 40,
  },
+  map: {
+    width: 250,
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
 
 });
