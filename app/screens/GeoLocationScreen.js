@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, Navigator, Alert } from 'react-native';
+import {StyleSheet, Text, Navigator, Alert, MapView } from 'react-native';
 import ViewContainer from '../components/ViewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
 
@@ -19,6 +19,10 @@ class GeoLocationScreen extends Component {
 
         <Text> Aqui me toca poner el mapita</Text>
 
+        <MapView style = {styles.mapita}
+            showUserLocation = {true}
+        />
+
       </ViewContainer>
 
 
@@ -35,6 +39,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  mapita: {
+    height: 250,
+    justifyContent: 'center',
+    margin: 40,
+ },
+
 
 });
 
