@@ -15,7 +15,6 @@ class GeoLocationScreen extends Component {
    }
 
   render() {
-    console.log("render?")
     return (
       <ViewContainer>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
@@ -29,7 +28,6 @@ class GeoLocationScreen extends Component {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-          onSelect = {() => console.log("Selecciono") }
           onPress= {() => console.log("Presiono") }
         />
 
