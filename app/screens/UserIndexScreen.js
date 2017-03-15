@@ -19,9 +19,7 @@ import ApiUtils from '../utils/Helpers.js';
     var ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
 
     this.state = {
-      users: [],
-      email: '',
-      usersDatasource: [],
+      dataSource: ds.cloneWithRows([])
     }
 
   }
@@ -34,26 +32,16 @@ import ApiUtils from '../utils/Helpers.js';
 
   render() {
 
-    var usuarios = _.map(
-      this.state.users, (user) => {
-        return (
-
-          <TouchableOpacity key={user.id} style={styles.personRow}onPress = {() => console.log("CLicked: " + user.email)}
-          >
-            <Text>{user.email}</Text>
-          </TouchableOpacity>
-
-
-        )
-      }
-    )
-
     return (
 
       <ViewContainer>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
 
-        {usuarios}
+        <ListView style = {{marginTop: 0}}
+          enableEmptySections = {true}
+          dataSource = {this.state.dataSource}
+          renderRow = {(user) => { return this._renderUserRow(user)}}>
+        </ListView>
 
       </ViewContainer>
     );
@@ -61,10 +49,8 @@ import ApiUtils from '../utils/Helpers.js';
 
   // Get a user
   _getUsersAPI(){
-
-    console.log("entro al fetch")
+    var usuarios = []
     let url = ApiUtils.url + 'users';
-    console.log(url)
     fetch(url,
       {
         method: 'GET',
@@ -76,32 +62,41 @@ import ApiUtils from '../utils/Helpers.js';
     .then(ApiUtils.checkStatus)
     .then(response => response.json())
     .then(
-
-      (response) => {
-        this.setState({
-          id: response[0].id,
-          users: response,
-          email: response[0].email,
-          // usersDatasource: ds.cloneWithRows(response)
-        })
-
-        console.log("response")
-        console.log(this.state.id)
-        console.log(this.state.users)
-        console.log(this.state.email)
-        console.log(this.state.usersDatasource)
-
-    }
-
+        (responseJson) => {
+          console.log(responseJson)
+          var users = responseJson
+          for(var i = 0; i < users.length;i++){
+            usuarios.push(users[i])
+          }
+          console.log(usuarios)
+          this.setState({
+              dataSource: this.state.dataSource.cloneWithRows(usuarios)
+          })
+        }
 
       )
     .catch((error) => {
+      console.log(error)
       Alert.alert(
           "Error1",
           'There was an error trying to connect with the server. Please try later.'
       );
 
     }).done();
+  }
+
+  _renderUserRow(user){
+    var i = i+1;
+    return(
+      <TouchableOpacity style={styles.userRow} onPress = {(event) => console.log(user) } >
+        <Text style = {styles.personName}> {` ${_.capitalize(user.email)} ${_.capitalize(user.name)}`} </Text>
+
+        <View style = {{flex: 1}} />
+
+        <Icon name="chevron-right"  style = {styles.personMoreIcon}/>
+
+      </TouchableOpacity>
+    )
   }
 
 }
@@ -113,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  personRow: {
+  userRow: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
