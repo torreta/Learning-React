@@ -36,7 +36,15 @@ import ApiUtils from '../utils/Helpers.js';
 
     var usuarios = _.map(
       this.state.users, (user) => {
-         return <Text>{user.email}</Text>
+        return (
+
+          <TouchableOpacity key={user.id} style={styles.personRow}onPress = {() => console.log("CLicked: " + user.email)}
+          >
+            <Text>{user.email}</Text>
+          </TouchableOpacity>
+
+
+        )
       }
     )
 
@@ -47,10 +55,7 @@ import ApiUtils from '../utils/Helpers.js';
 
         {usuarios}
 
-
       </ViewContainer>
-
-
     );
   }
 
@@ -74,24 +79,22 @@ import ApiUtils from '../utils/Helpers.js';
 
       (response) => {
         this.setState({
+          id: response[0].id,
           users: response,
           email: response[0].email,
-          // usersDatasource: this.state.ds.cloneWithRows(response)
+          // usersDatasource: ds.cloneWithRows(response)
         })
 
         console.log("response")
+        console.log(this.state.id)
         console.log(this.state.users)
         console.log(this.state.email)
+        console.log(this.state.usersDatasource)
 
     }
 
 
       )
-    // .then(console.log("usuarios:"))
-    // .then(response => console.log(response))
-    // .then(response => {this.state.users})
-    // .then(console.log("despues de la llamada:"))
-    // .then(console.log(this.state.users))
     .catch((error) => {
       Alert.alert(
           "Error1",
