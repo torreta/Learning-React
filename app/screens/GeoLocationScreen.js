@@ -8,26 +8,29 @@ const {height, width} = Dimensions.get('window');
 
 class GeoLocationScreen extends Component {
 
+
   constructor(props){
     super(props)
-  }
+    this.state = {}
+   }
 
   render() {
-
+    console.log("render?")
     return (
-
       <ViewContainer>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
 
-        <Text> Aqui me toca poner el mapita</Text>
+        <Text> Aqui me toca poner el mapita???</Text>
 
-        <MapView style = {styles.map}
+        <MapView tooltip={true} style = {styles.map}
           initialRegion={{
             latitude: 37.78825,
             longitude: -122.4324,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
+          onSelect = {() => console.log("Selecciono") }
+          onPress= {() => console.log("Presiono") }
         />
 
       </ViewContainer>
@@ -52,8 +55,8 @@ const styles = StyleSheet.create({
     margin: 40,
  },
   map: {
-    width: 250,
-    height: 200,
+    width: width,
+    height: 300,
     alignItems: 'center',
     justifyContent: 'center',
   },
