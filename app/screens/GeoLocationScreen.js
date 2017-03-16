@@ -11,7 +11,10 @@ class GeoLocationScreen extends Component {
 
   constructor(props){
     super(props)
-    this.state = {}
+    this.state = {
+      latitude: 0,
+      longitude: 0,
+    }
    }
 
   render() {
@@ -28,8 +31,15 @@ class GeoLocationScreen extends Component {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-          onPress= {() => console.log("Presiono") }
-        />
+          onPress={(event) => {
+                    console.log(event.position)}
+                  }
+        >
+
+          <MapView.Marker coordinate={{latitude: 37.78825, longitude: -122.4324,}} tittle={"markita??"} />
+
+        </MapView>
+
 
       </ViewContainer>
 
