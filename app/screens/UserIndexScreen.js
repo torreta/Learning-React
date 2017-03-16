@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator, Alert, Image } from 'react-native';
+import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator, Alert, Image,Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from '../components/ViewContainer'
@@ -10,7 +10,8 @@ import message from '../../temp'
 import people from '../../temp'
 // import API from '../utils/api.js';
 import ApiUtils from '../utils/Helpers.js';
-
+import MapView from 'react-native-maps'
+const {height, width} = Dimensions.get('window');
 
  class UserIndexScreen extends Component {
 
@@ -117,6 +118,26 @@ import ApiUtils from '../utils/Helpers.js';
 
           <Text style = {styles.personName}> {`Direccion (suite): ${_.capitalize(user.address.suite)}`}  </Text>
 
+          <Text style = {styles.personName}> {`Latitud: ${_.capitalize(user.address.geo.lat)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Longitud: ${_.capitalize(user.address.geo.lng)}`}  </Text>
+
+          <Text style = {styles.personName}>  </Text>
+
+
+            <MapView tooltip={true} style = {styles.map}
+              initialRegion={{
+                latitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lat)),
+                longitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lng)),
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            >
+
+              <MapView.Marker coordinate={{latitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lat)),
+                longitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lng)),}} tittle={"markita??"} />
+            </MapView>
+
           <Text style = {styles.personName}>  </Text>
 
         </View>
@@ -178,7 +199,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     flexDirection: "column",
-  }
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  mapita: {
+    height: 250,
+    justifyContent: 'center',
+    margin: 40,
+ },
+  map: {
+    width: width-80,
+    height: 220,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
 });
 
