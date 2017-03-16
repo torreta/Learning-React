@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator, Alert } from 'react-native';
+import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator, Alert, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from '../components/ViewContainer'
@@ -87,13 +87,41 @@ import ApiUtils from '../utils/Helpers.js';
 
   _renderUserRow(user){
     var i = i+1;
+    console.log(user)
     return(
       <TouchableOpacity style={styles.userRow} onPress = {(event) => console.log(user) } >
-        <Text style = {styles.personName}> {` ${_.capitalize(user.email)} ${_.capitalize(user.name)}`} </Text>
 
-        <View style = {{flex: 1}} />
 
-        <Icon name="chevron-right"  style = {styles.personMoreIcon}/>
+        <View style = {styles.casillaFoto} >
+
+          <Image style = {styles.logo} source ={{ uri: 'https://facebook.github.io/react/img/logo_og.png'} }/>
+
+          <Image style = {styles.logo} source ={{ uri: 'https://placehold.it/50x50/FF00EE'} }/>
+
+        </View>
+
+        <View style = {styles.casilla} >
+
+
+          <Text style = {styles.userName}> {`Usuario: ${_.capitalize(user.username)}`} </Text>
+
+          <Text style = {styles.personName}> {`Correo: ${_.capitalize(user.email)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Correo: ${_.capitalize(user.name)}`}  </Text>
+
+          <Text style = {styles.website}> {`Pagina Web: ${_.capitalize(user.website)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Telefono: ${_.capitalize(user.phone)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Direccion (ciudad): ${_.capitalize(user.address.city)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Direccion (suite): ${_.capitalize(user.address.suite)}`}  </Text>
+
+          <Text style = {styles.personName}>  </Text>
+
+        </View>
+
+        <Icon name="address-book-o"  style = {styles.personMoreIcon}/>
 
       </TouchableOpacity>
     )
@@ -112,16 +140,44 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    height: 30,
+    flex: 1,
+    borderWidth: 5,
+    borderBottomColor: 'green',
+    borderStyle: 'solid',
   },
   personName: {
-    marginLeft: 20,
+
+  },
+  userName: {
+    fontWeight: 'bold',
+  },
+  website: {
+    color: 'dodgerblue',
   },
   personMoreIcon: {
     color: "green",
-    height: 20,
-    width: 20,
-    marginRight: 20
+    height: 40,
+    width: 40,
+    marginRight: 10
+  },
+  logo: {
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    height: 40,
+    width: 40,
+
+  },
+  casilla: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexDirection: "column",
+  },
+  casillaFoto: {
+    flex:0.15,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexDirection: "column",
   }
 
 });
