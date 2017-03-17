@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, Navigator, Alert, Dimensions, TextInput } from 'react-native';
+import {StyleSheet, Text, Navigator, Alert, Dimensions, TextInput, Button } from 'react-native';
 import ViewContainer from '../components/ViewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
 
@@ -16,6 +16,21 @@ class LoginScreen extends Component {
     }
    }
 
+
+  _onPressButton(){
+
+    // if ((this.state.textLogin != undefined) && (this.state.textPassword != undefined)) {
+    //   console.log("Botton Apretado")
+    //   console.log(this.state.textLogin)
+    //   console.log(this.state.textPassword)
+    // }else{
+    //   console.log("Botton Apretado, pero sin valores")
+    // }
+    Alert.alert("funciona el boton, yay!")
+
+  }
+
+
   render() {
     return (
       <ViewContainer>
@@ -25,17 +40,29 @@ class LoginScreen extends Component {
 
         <TextInput
           ref = "login"
+          placeholder="Usuario"
           style={styles.input}
-          onChangeText={ (text) => this.setState({text})}
-          value={this.state.textLogin}
+          onChangeText={ (textLogin) => this.setState({textLogin})}
+
         />
 
         <TextInput
           ref = "password"
+          placeholder="Contraseña"
           style={styles.input}
-          onChangeText={ (text) => this.setState({text})}
-          value={this.state.textPassword}
+          secureTextEntry= {true}
+          onChangeText={ (textPassword) => this.setState({textPassword})}
+
         />
+
+        <Button
+          ref = "boton-aceptar"
+          title = "Entrar"
+          color = "#841584"
+          accessibilityLabel = "Quieres saber mas del boton purpura?"
+          onPress = {this._onPressButton}
+        />
+
 
       </ViewContainer>
 
