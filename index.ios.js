@@ -63,6 +63,17 @@ export default class playapp extends Component {
 
         </Icon.TabBarItemIOS>
 
+        <Icon.TabBarItemIOS
+          selected = {this.state.selectedTab === "tab5_login"}
+          title = {`TAB 5 - Login`}
+          iconName="id-badge"
+          onPress={() => this.setState({selectedTab: "tab5_login"})}
+        >
+          <AppNavigator
+          initialRoute ={{ident: "Login"}} />
+
+        </Icon.TabBarItemIOS>
+
       </TabBarIOS>
     )
   }

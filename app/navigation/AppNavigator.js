@@ -6,6 +6,7 @@ import PeopleIndexScreen from '../screens/PeopleIndexScreen'
 import PersonShowScreen from '../screens/PersonShowScreen'
 import UserIndexScreen from '../screens/UserIndexScreen'
 import GeoLocationScreen from '../screens/GeoLocationScreen'
+import LoginScreen from '../screens/LoginScreen'
 
 
 
@@ -33,6 +34,11 @@ class AppNavigator extends Component {
         case "GeoLocation":
           return(
             <GeoLocationScreen {...globalNavigatorProps} />
+        )
+        break;
+        case "Login":
+          return(
+            <LoginScreen {...globalNavigatorProps} />
         )
         break;
         default:
