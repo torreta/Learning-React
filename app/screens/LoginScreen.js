@@ -17,26 +17,25 @@ class LoginScreen extends Component {
 
 
   _onPressButton(){
-    console.log(this)
-    Alert.alert("funciona el boton: " + this.state.email +":" + this.state.password + ", que desperdicio")
+    Alert.alert("funciona el boton: Login -> " + this.state.email +":" + this.state.password)
 
   }
 
 
   render() {
-      console.log("estado, correcto?")
-      console.log(this)
+
     return (
       <ViewContainer style = {{backgroundColor: "skyblue"}} >
         <StatusBarBackground style ={{backgroundColor: "black"}} />
-
-        <Text> el login va aqui: </Text>
 
         <View style = {styles.casillaFoto} >
 
           <Image style = {styles.logo} source ={{ uri:'https://placehold.it/120x120/861686'} }/>
 
+
+
         </View>
+        <View style = {styles.casillaFoto} >
 
           <TextInput
             ref = "login"
@@ -48,7 +47,6 @@ class LoginScreen extends Component {
             autoCapitalize='none'
             keyboardType='email-address'
             blurOnSubmit={true}
-            // onSubmitEditing={() => this._signIn()}
           />
 
           <TextInput
@@ -60,7 +58,6 @@ class LoginScreen extends Component {
             value={this.state.password}
             autoCapitalize='none'
             blurOnSubmit={true}
-            // onSubmitEditing={() => this._signIn()}
           />
 
           <Button
@@ -72,6 +69,8 @@ class LoginScreen extends Component {
               this._onPressButton()            }
             }
           />
+        </View>
+
 
       </ViewContainer>
 
@@ -88,36 +87,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  mapita: {
-    height: 250,
-    justifyContent: 'center',
-    margin: 40,
- },
-  map: {
-    width: width,
-    height: 300,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column'
   },
   inputLogin: {
-    width: width,
+    paddingLeft: 10, // Texto de placeholder
+    marginLeft: 25,
+    marginRight: 25,
     height: 50,
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 160,
   },
   input: {
-    width: width,
+    paddingLeft: 10,
+    marginLeft: 25,
+    marginRight: 25,
     height: 50,
     borderColor: 'grey',
     borderWidth: 1,
+    marginTop: 3,
   },
   logo: {
     marginTop: 100,
     height: 120,
     width: 120,
-
   },
   casillaFoto: {
     alignItems: 'center',
