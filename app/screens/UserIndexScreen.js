@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator } from 'react-native';
+import {StyleSheet, Text, View, ListView, TouchableOpacity, Navigator, Alert, Image,Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import ViewContainer from '../components/ViewContainer'
@@ -8,8 +8,10 @@ import _ from 'lodash'
 
 import message from '../../temp'
 import people from '../../temp'
-import API from '../utils/api.js';
-
+// import API from '../utils/api.js';
+import ApiUtils from '../utils/Helpers.js';
+import MapView from 'react-native-maps'
+const {height, width} = Dimensions.get('window');
 
  class UserIndexScreen extends Component {
 
@@ -18,71 +20,133 @@ import API from '../utils/api.js';
     var ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 != r2})
 
     this.state = {
-      peopleDataSource: ds.cloneWithRows(people)
+      dataSource: ds.cloneWithRows([])
     }
 
   }
 
   componentWillMount(){
-    console.log("component will mount is always there")
+    // console.log("component will mount is always there")
+    this._getUsersAPI()
 
   }
 
   render() {
-          console.log(API.url);
+
     return (
 
       <ViewContainer>
         <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
 
-        <Text> Marcar que esta la cosa funcionando</Text>
-
+        <ListView style = {{marginTop: 0}}
+          enableEmptySections = {true}
+          dataSource = {this.state.dataSource}
+          renderRow = {(user) => { return this._renderUserRow(user)}}>
+        </ListView>
 
       </ViewContainer>
-
-
     );
   }
 
   // Get a user
   _getUsersAPI(){
-
-    let url = API.url + 'authenticate';
-
+    var usuarios = []
+    let url = ApiUtils.url + 'users';
     fetch(url,
       {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          'client_uid': API.client_uid,
-        })
       })
     .then(ApiUtils.checkStatus)
     .then(response => response.json())
-    .then(response => this._requestSuccessClient(response))
+    .then(
+        (responseJson) => {
+          console.log(responseJson)
+          var users = responseJson
+          for(var i = 0; i < users.length;i++){
+            usuarios.push(users[i])
+          }
+          console.log(usuarios)
+          this.setState({
+              dataSource: this.state.dataSource.cloneWithRows(usuarios)
+          })
+        }
+
+      )
     .catch((error) => {
+      console.log(error)
       Alert.alert(
           "Error1",
           'There was an error trying to connect with the server. Please try later.'
       );
-      this.setState({isLoading:false});
 
-      AsyncStorage.removeItem('mode');
-      AsyncStorage.setItem('mode','customer');
     }).done();
   }
 
-  _navigateToPersonShow(person){
-    this.props.navigator.push({
-      ident: "PersonShow",
-      person,
-      sceneConfig: Navigator.SceneConfigs.FloatFromBottom
-    })
-  }
+  _renderUserRow(user){
+    var i = i+1;
+    console.log(user)
+    return(
+      <TouchableOpacity style={styles.userRow} onPress = {(event) => console.log(user) } >
 
+
+        <View style = {styles.casillaFoto} >
+
+          <Image style = {styles.logo} source ={{ uri: 'https://facebook.github.io/react/img/logo_og.png'} }/>
+
+          <Image style = {styles.logo} source ={{ uri: 'https://placehold.it/50x50/FF00EE'} }/>
+
+        </View>
+
+        <View style = {styles.casilla} >
+
+
+          <Text style = {styles.userName}> {`Usuario: ${_.capitalize(user.username)}`} </Text>
+
+          <Text style = {styles.personName}> {`Correo: ${_.capitalize(user.email)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Correo: ${_.capitalize(user.name)}`}  </Text>
+
+          <Text style = {styles.website}> {`Pagina Web: ${_.capitalize(user.website)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Telefono: ${_.capitalize(user.phone)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Direccion (ciudad): ${_.capitalize(user.address.city)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Direccion (suite): ${_.capitalize(user.address.suite)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Latitud: ${_.capitalize(user.address.geo.lat)}`}  </Text>
+
+          <Text style = {styles.personName}> {`Longitud: ${_.capitalize(user.address.geo.lng)}`}  </Text>
+
+          <Text style = {styles.personName}>  </Text>
+
+
+            <MapView tooltip={true} style = {styles.map}
+              initialRegion={{
+                latitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lat)),
+                longitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lng)),
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            >
+
+              <MapView.Marker coordinate={{latitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lat)),
+                longitude: (user.address.geo.lat == undefined ? 0: parseFloat(user.address.geo.lng)),}} tittle={"markita??"} />
+            </MapView>
+
+          <Text style = {styles.personName}>  </Text>
+
+        </View>
+
+        <Icon name="address-book-o"  style = {styles.personMoreIcon}/>
+
+      </TouchableOpacity>
+    )
+  }
 
 }
 
@@ -93,21 +157,66 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  personRow: {
+  userRow: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    height: 30,
+    flex: 1,
+    borderWidth: 5,
+    borderBottomColor: 'green',
+    borderStyle: 'solid',
   },
   personName: {
-    marginLeft: 20,
+
+  },
+  userName: {
+    fontWeight: 'bold',
+  },
+  website: {
+    color: 'dodgerblue',
   },
   personMoreIcon: {
     color: "green",
-    height: 20,
-    width: 20,
-    marginRight: 20
-  }
+    height: 40,
+    width: 40,
+    marginRight: 10
+  },
+  logo: {
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    height: 40,
+    width: 40,
+
+  },
+  casilla: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexDirection: "column",
+  },
+  casillaFoto: {
+    flex:0.15,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexDirection: "column",
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  mapita: {
+    height: 250,
+    justifyContent: 'center',
+    margin: 40,
+ },
+  map: {
+    width: width-80,
+    height: 220,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
 });
 
