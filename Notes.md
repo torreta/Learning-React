@@ -39,6 +39,8 @@ what you can do is make folders for very special components that may need be rew
 
 oh, didnt know you could make transparency with the opacity atribute on rbga colors, its a neat trick. worth noting
 
+not even images will load from not https:// sources, since they require the ios Exeption to load
+
 
 
 
