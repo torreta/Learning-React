@@ -33,8 +33,7 @@ class LoginScreen extends Component {
 
           <View style = {styles.casillaFoto} >
 
-            <Image style = {styles.logo} source ={require('../../image/Animation30.gif')} />
-
+            <Image style = {styles.logo} source ={{ uri:'https://upload.wikimedia.org/wikipedia/commons/9/95/Animation30.gif'} }/>
 
           </View>
           <View style = {styles.casillaFoto} >
