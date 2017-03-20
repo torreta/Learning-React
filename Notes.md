@@ -42,5 +42,6 @@ oh, didnt know you could make transparency with the opacity atribute on rbga col
 not even images will load from not https:// sources, since they require the ios Exeption to load
 
 
+the lodash trim can erase specific caracters if specified
 
 
