@@ -33,6 +33,10 @@ actually, it worked this way:
     https://www.slideshare.net/kobkrit/reactnative-tutorial-map
 
 
+i made a separate branch for ios and android, turns out, it wasnt necesary... react-native provides you with 2 indexes for a reason,
+what you can do is make folders for very special components that may need be rewritten for both builds
+
+
 
 
 
