@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, Navigator, Alert, Dimensions, TextInput, Button } from 'react-native';
+import {StyleSheet, Text, Navigator, Alert, Dimensions, TextInput, Button, Image, View } from 'react-native';
 import ViewContainer from '../components/ViewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
 
@@ -7,62 +7,71 @@ const {height, width} = Dimensions.get('window');
 
 class LoginScreen extends Component {
 
-
   constructor(props){
     super(props)
     this.state = {
-      textLogin: 'Usuario',
-      textPassword: 'Contraseña'
+      email: '',
+      password: '',
     }
    }
 
 
   _onPressButton(){
-
-    // if ((this.state.textLogin != undefined) && (this.state.textPassword != undefined)) {
-    //   console.log("Botton Apretado")
-    //   console.log(this.state.textLogin)
-    //   console.log(this.state.textPassword)
-    // }else{
-    //   console.log("Botton Apretado, pero sin valores")
-    // }
-    Alert.alert("funciona el boton, yay!")
+    console.log(this)
+    Alert.alert("funciona el boton: " + this.state.email +":" + this.state.password + ", que desperdicio")
 
   }
 
 
   render() {
+      console.log("estado, correcto?")
+      console.log(this)
     return (
-      <ViewContainer>
-        <StatusBarBackground style = {{backgroundColor: "skyblue" }} />
+      <ViewContainer style = {{backgroundColor: "skyblue"}} >
+        <StatusBarBackground style ={{backgroundColor: "black"}} />
 
         <Text> el login va aqui: </Text>
 
-        <TextInput
-          ref = "login"
-          placeholder="Usuario"
-          style={styles.input}
-          onChangeText={ (textLogin) => this.setState({textLogin})}
+        <View style = {styles.casillaFoto} >
 
-        />
+          <Image style = {styles.logo} source ={{ uri:'https://placehold.it/120x120/861686'} }/>
 
-        <TextInput
-          ref = "password"
-          placeholder="Contraseña"
-          style={styles.input}
-          secureTextEntry= {true}
-          onChangeText={ (textPassword) => this.setState({textPassword})}
+        </View>
 
-        />
+          <TextInput
+            ref = "login"
+            autoFocus = {true}
+            placeholder="Usuario"
+            style={styles.inputLogin}
+            onChangeText={ (email) => this.setState({email})}
+            value={this.state.email}
+            autoCapitalize='none'
+            keyboardType='email-address'
+            blurOnSubmit={true}
+            // onSubmitEditing={() => this._signIn()}
+          />
 
-        <Button
-          ref = "boton-aceptar"
-          title = "Entrar"
-          color = "#841584"
-          accessibilityLabel = "Quieres saber mas del boton purpura?"
-          onPress = {this._onPressButton}
-        />
+          <TextInput
+            ref = "password"
+            placeholder="Contraseña"
+            style={styles.input}
+            secureTextEntry= {true}
+            onChangeText={ (password) => this.setState({password})}
+            value={this.state.password}
+            autoCapitalize='none'
+            blurOnSubmit={true}
+            // onSubmitEditing={() => this._signIn()}
+          />
 
+          <Button
+            ref = "boton-aceptar"
+            title = "Entrar"
+            color = "#841584"
+            accessibilityLabel = "Quieres saber mas del boton purpura?"
+            onPress = {() => {
+              this._onPressButton()            }
+            }
+          />
 
       </ViewContainer>
 
@@ -91,13 +100,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  inputLogin: {
+    width: width,
+    height: 50,
+    borderColor: 'grey',
+    borderWidth: 1,
+    marginTop: 160,
+  },
   input: {
     width: width,
     height: 50,
     borderColor: 'grey',
     borderWidth: 1,
   },
+  logo: {
+    marginTop: 100,
+    height: 120,
+    width: 120,
 
+  },
+  casillaFoto: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: "column",
+  },
 
 });
 
