@@ -33,8 +33,7 @@ class LoginScreen extends Component {
 
           <View style = {styles.casillaFoto} >
 
-            <Image style = {styles.logo} source ={{ uri:'https://placehold.it/120x120/861686'} }/>
-
+            <Image style = {styles.logo} source ={require('../../image/Animation30.gif')} />
 
 
           </View>
