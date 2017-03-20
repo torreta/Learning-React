@@ -29,7 +29,7 @@ class LoginScreen extends Component {
 
         <Image style = {styles.fondo} source ={require('../../image/Cloudy.jpeg')}>
 
-          <StatusBarBackground style ={{backgroundColor: "black"}} />
+          <StatusBarBackground style ={{backgroundColor: "#3097d7"}} />
 
           <View style = {styles.casillaFoto} >
 
