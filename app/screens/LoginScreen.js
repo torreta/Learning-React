@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, Navigator, Alert, Dimensions, TextInput, Button, Image, View } from 'react-native';
 import ViewContainer from '../components/ViewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
+import _ from 'lodash'
 
 const {height, width} = Dimensions.get('window');
 
@@ -17,7 +18,7 @@ class LoginScreen extends Component {
 
 
   _onPressButton(){
-    Alert.alert("funciona el boton: Login -> " + this.state.email +":" + this.state.password)
+    Alert.alert("funciona el boton: Login -> " + _.trim(this.state.email) +":" + _.trim(this.state.password))
 
   }
 
