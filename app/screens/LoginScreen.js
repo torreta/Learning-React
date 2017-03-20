@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 160,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
+    fontFamily: 'Cochin'
   },
   input: {
     paddingLeft: 10,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 3,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255,255,255,0.2)',
 
   },
   logo: {
