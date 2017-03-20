@@ -26,51 +26,55 @@ class LoginScreen extends Component {
 
     return (
       <ViewContainer style = {{backgroundColor: "skyblue"}} >
-        <StatusBarBackground style ={{backgroundColor: "black"}} />
 
-        <View style = {styles.casillaFoto} >
+        <Image style = {styles.fondo} source ={require('../../image/Cloudy.jpeg')}>
 
-          <Image style = {styles.logo} source ={{ uri:'https://placehold.it/120x120/861686'} }/>
+          <StatusBarBackground style ={{backgroundColor: "black"}} />
+
+          <View style = {styles.casillaFoto} >
+
+            <Image style = {styles.logo} source ={{ uri:'https://placehold.it/120x120/861686'} }/>
 
 
 
-        </View>
-        <View style = {styles.casillaFoto} >
+          </View>
+          <View style = {styles.casillaFoto} >
 
-          <TextInput
-            ref = "login"
-            autoFocus = {true}
-            placeholder="Usuario"
-            style={styles.inputLogin}
-            onChangeText={ (email) => this.setState({email})}
-            value={this.state.email}
-            autoCapitalize='none'
-            keyboardType='email-address'
-            blurOnSubmit={true}
-          />
+            <TextInput
+              ref = "login"
+              autoFocus = {true}
+              placeholder="Usuario"
+              style={styles.inputLogin}
+              onChangeText={ (email) => this.setState({email})}
+              value={this.state.email}
+              autoCapitalize='none'
+              keyboardType='email-address'
+              blurOnSubmit={true}
+            />
 
-          <TextInput
-            ref = "password"
-            placeholder="Contraseña"
-            style={styles.input}
-            secureTextEntry= {true}
-            onChangeText={ (password) => this.setState({password})}
-            value={this.state.password}
-            autoCapitalize='none'
-            blurOnSubmit={true}
-          />
+            <TextInput
+              ref = "password"
+              placeholder="Contraseña"
+              style={styles.input}
+              secureTextEntry= {true}
+              onChangeText={ (password) => this.setState({password})}
+              value={this.state.password}
+              autoCapitalize='none'
+              blurOnSubmit={true}
+            />
 
-          <Button
-            ref = "boton-aceptar"
-            title = "Entrar"
-            color = "#841584"
-            accessibilityLabel = "Quieres saber mas del boton purpura?"
-            onPress = {() => {
-              this._onPressButton()            }
-            }
-          />
-        </View>
+            <Button
+              ref = "boton-aceptar"
+              title = "Entrar"
+              color = "#841584"
+              accessibilityLabel = "Quieres saber mas del boton purpura?"
+              onPress = {() => {
+                this._onPressButton()            }
+              }
+            />
+          </View>
 
+        </Image>
 
       </ViewContainer>
 
@@ -89,6 +93,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     flexDirection: 'column'
   },
+  fondo: {
+    width: width,
+    height: height,
+  },
   inputLogin: {
     paddingLeft: 10, // Texto de placeholder
     marginLeft: 25,
@@ -97,6 +105,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 160,
+    backgroundColor: 'white',
   },
   input: {
     paddingLeft: 10,
@@ -106,6 +115,8 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 3,
+    backgroundColor: 'white',
+
   },
   logo: {
     marginTop: 100,
