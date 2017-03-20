@@ -63,10 +63,11 @@ class LoginScreen extends Component {
               blurOnSubmit={true}
             />
 
-            <Button
+            <Button style={styles.botoncito}
               ref = "boton-aceptar"
               title = "Entrar"
               color = "#841584"
+              disabled = {((this.state.email != "")&&(this.state.password != ""))? false : true}
               accessibilityLabel = "Quieres saber mas del boton purpura?"
               onPress = {() => {
                 this._onPressButton()            }
@@ -128,6 +129,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: "column",
+  },
+  botoncito: {
+    backgroundColor: 'transparent',
+  },
+  buttonDisabled: {
+    height: 35,
+    padding: 8,
+    backgroundColor: 'rgba(182, 220, 224, 1)',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
 });
