@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 160,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent', // transparent without opacity
     fontFamily: 'Cochin'
   },
   input: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     marginTop: 3,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: 'rgba(255,255,255,0.2)', // transparent with opacity trick
 
   },
   logo: {

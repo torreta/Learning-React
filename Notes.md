@@ -37,6 +37,8 @@ i made a separate branch for ios and android, turns out, it wasnt necesary... re
 what you can do is make folders for very special components that may need be rewritten for both builds
 
 
+oh, didnt know you could make transparency with the opacity atribute on rbga colors, its a neat trick. worth noting
+
 
 
 
