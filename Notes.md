@@ -45,3 +45,17 @@ not even images will load from not https:// sources, since they require the ios 
 the lodash trim can erase specific caracters if specified
 
 
+sometime i will need to change the icon for the app
+
+https://blog.bam.tech/developper-news/how-to-generate-your-react-native-app-icons-in-a-single-command-line
+
+likewise, the android splash screen:
+
+https://plus.google.com/+AndroidDevelopers/posts/Z1Wwainpjhd
+
+and the guide for the ios splash screen:
+
+http://stackoverflow.com/questions/34027270/ios-launch-screen-in-react-native
+
+
+
