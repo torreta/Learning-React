@@ -58,4 +58,8 @@ and the guide for the ios splash screen:
 http://stackoverflow.com/questions/34027270/ios-launch-screen-in-react-native
 
 
+oh, the icons where made here, pretty simple, awesome tool
+
+https://makeappicon.com/
+
 
