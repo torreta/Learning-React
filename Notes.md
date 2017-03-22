@@ -68,7 +68,7 @@ pretty much made throught this guide:
 
 https://www.youtube.com/watch?v=TQmudJLhPx8
 https://github.com/zo0r/react-native-push-notification
-
+(is worth noting that i just made the steps for ios)
 
 so i had to delete a tabbar item (showUser) because after 5 tabs, the app starts to show the "more" button instead of the simple icon, everytime i touched the "more" button the app closed.
 

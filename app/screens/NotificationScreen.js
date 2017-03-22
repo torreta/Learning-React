@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Picker, AppState } from 'react-native'
 import StatusBarBackground from '../components/StatusBarBackground'
+import PushController from '../services/PushController'
 
 class NotificationScreen extends Component {
 
@@ -54,7 +55,7 @@ class NotificationScreen extends Component {
 
             </Picker>
 
-
+            <PushController />
           </View>
 
         )
