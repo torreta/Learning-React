@@ -63,3 +63,10 @@ oh, the icons where made here, pretty simple, awesome tool
 https://makeappicon.com/
 
 
+ok, now im trying to put push notifications to my app,
+pretty much made throught this guide:
+
+https://www.youtube.com/watch?v=TQmudJLhPx8
+https://github.com/zo0r/react-native-push-notification
+
+
