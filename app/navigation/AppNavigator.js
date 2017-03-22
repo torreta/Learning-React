@@ -7,6 +7,7 @@ import PersonShowScreen from '../screens/PersonShowScreen'
 import UserIndexScreen from '../screens/UserIndexScreen'
 import GeoLocationScreen from '../screens/GeoLocationScreen'
 import LoginScreen from '../screens/LoginScreen'
+import NotificationScreen from '../screens/NotificationScreen'
 
 
 
@@ -39,6 +40,11 @@ class AppNavigator extends Component {
         case "Login":
           return(
             <LoginScreen {...globalNavigatorProps} />
+        )
+        break;
+        case "Notification":
+          return(
+            <NotificationScreen {...globalNavigatorProps} />
         )
         break;
         default:

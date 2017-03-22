@@ -31,17 +31,6 @@ export default class playapp extends Component {
         </Icon.TabBarItemIOS>
 
         <Icon.TabBarItemIOS
-          selected = {this.state.selectedTab === "tab2_show"}
-          title = {`TAB 2 - PERSON`}
-          iconName="user-circle"
-          onPress={() => this.setState({selectedTab: "tab2_show"})}
-        >
-          <AppNavigator
-          initialRoute ={{ident: "PersonShow", person: {id: "1", firstName: "Luis", lastName: "Campos", roomNumber: 30}}} />
-
-        </Icon.TabBarItemIOS>
-
-        <Icon.TabBarItemIOS
           selected = {this.state.selectedTab === "tab3_calls"}
           title = {`TAB 3 - USERS (R)`}
           iconName="feed"
@@ -71,6 +60,17 @@ export default class playapp extends Component {
         >
           <AppNavigator
           initialRoute ={{ident: "Login"}} />
+
+        </Icon.TabBarItemIOS>
+
+        <Icon.TabBarItemIOS
+          selected = {this.state.selectedTab === "tab6_notification"}
+          title = {`TAB 6 - notifications`}
+          iconName="commenting-o"
+          onPress={() => this.setState({selectedTab: "tab6_notification"})}
+        >
+          <AppNavigator
+          initialRoute ={{ident: "Notification"}} />
 
         </Icon.TabBarItemIOS>
 
